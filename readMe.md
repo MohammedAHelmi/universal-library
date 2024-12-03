@@ -8,7 +8,7 @@ I used [Fastify](https://fastify.dev/) to build the backend, [PostgreSQL](https:
 
 ---
 ### Dataset
-I used the works dump and authors dump on [open library](https://openlibrary.org/developers/dumps) I have another project that is dedicated to extracting JSON for each entry, discovering the different JSON shapes, inserting the data inside the database **concurrently** and building indexs and materialized views to help make this app efficient.
+I used the works dump and authors dump on [open library](https://openlibrary.org/developers/dumps) I have [another project](https://github.com/MohammedAHelmi/open-library-to-postgresql) that is dedicated to extracting JSON for each entry, discovering the different JSON shapes, inserting the data inside the database **concurrently** and building indexs and materialized views to help make this app efficient.
 
 ---
 ### APIs
