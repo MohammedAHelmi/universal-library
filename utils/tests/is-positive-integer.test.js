@@ -1,4 +1,4 @@
-import isPositiveInteger from "../../../utils/is-positive-integer.js";
+import isPositiveInteger from "../is-positive-integer.js";
 
 test('tests a positive integer', () => {
     expect(isPositiveInteger(10)).toBe(true);

@@ -1,4 +1,4 @@
-import parseIfExistsOrDefault from "../../../utils/parse-if-exists-or-default.js";
+import parseIfExistsOrDefault from "../parse-if-exists-or-default.js";
 
 
 test('tests parsing a string that is number', () => {

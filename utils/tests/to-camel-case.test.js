@@ -1,4 +1,4 @@
-import { snakeCaseToCamelCase, snakeCaseObjectKeysToCamelCase } from '../../../utils/to-camel-case.js'
+import { snakeCaseToCamelCase, snakeCaseObjectKeysToCamelCase } from '../to-camel-case.js'
 
 test('test snake_case to camelCase', () => {
     expect(snakeCaseToCamelCase('snake_case')).toBe('snakeCase');

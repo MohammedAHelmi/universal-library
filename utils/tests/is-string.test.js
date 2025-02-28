@@ -1,4 +1,4 @@
-import isString from '../../../utils/is-string';
+import isString from '../is-string.js';
 
 test('tests a string type variable', () => {
     expect(isString('string')).toBe(true);

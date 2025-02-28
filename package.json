@@ -2,11 +2,6 @@
   "type": "module",
   "name": "universal-library",
   "version": "1.0.0",
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ],
   "scripts": {
     "dev:ui": "webpack serve --config ./frontend/configs/webpack.config.cjs --mode development",
     "build": "webpack --config ./frontend/configs/webpack.config.cjs --mode production",
@@ -14,11 +9,13 @@
     "start:frontend": "npm run build && npm run compile:jsx && node ./frontend/server/server.js",
     "start:backend": "node ./backend/server.js",
     "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
-    "test:backend": "node --experimental-vm-modules node_modules/jest/bin/jest.js backend --config \"./backend/tests/jest.config.js\""
+    "test:utils": "node --experimental-vm-modules node_modules/jest/bin/jest.js utils",
+    "test:backend": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config=backend/tests/config/jest.config.js",
+    "test": "node"
   },
   "keywords": [],
   "author": "Mohammed Abdallah",
-  "license": "ISC",
+  "license": "MIT",
   "description": "",
   "dependencies": {
     "@fastify/cors": "^10.0.1",

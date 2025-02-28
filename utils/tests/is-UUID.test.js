@@ -1,4 +1,4 @@
-import isUUID from "../../../utils/is-UUID.js";
+import isUUID from "../is-UUID.js";
 
 test('tests a valid UUID v4', () => {
     expect(isUUID('00000000-0000-0000-0000-000000000000')).toBe(true)

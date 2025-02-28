@@ -1,4 +1,4 @@
-import asyncThrowingToErrorAsValue from '../../../utils/async-throwing-to-error-as-value.js';
+import asyncThrowingToErrorAsValue from '../async-throwing-to-error-as-value.js';
 
 test("testing Error throwing function", async () => {
     const fn = async () => {
