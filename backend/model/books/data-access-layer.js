@@ -51,7 +51,7 @@ class BooksRepository{
    
     static async getAuthorBooks(authorId){
         const { rows } = await pool.query(`
-            SELECT books.*
+            SELECT books.id, books.title
             FROM books
             JOIN book_authors
             ON book_authors.book_id = books.id

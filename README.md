@@ -82,8 +82,7 @@ A list of objects of the following shape
 | Property Name | Type | Description |
 | ------------- | ---- | ----------- |
 | id | `string` | The uuid of the book which can be used to access it |
-| title | `string` | A string that contains any character representing the title of the book |
-| description | `string` / `null` | A description about the book | 
+| title | `string` | The title of the book in UTF-8 string representation |
 ###### 400
 - Invalid Id - if the id does not follow UUID v4 syntax
 

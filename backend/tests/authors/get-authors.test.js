@@ -9,7 +9,7 @@ test('getting first page with no queries', async () => {
     expect(authors instanceof Array).toBe(true);
     
     for(const author of authors){
-        expect(Object.keys(author).sort()).toEqual(['id', 'name', 'bio'].sort());
+        expect(Object.keys(author).sort()).toEqual(['id', 'name'].sort());
         expect(author.id).not.toBeNull();
         expect(author.name).not.toBeNull();
     }
@@ -30,7 +30,7 @@ test('getting the 1000th page', async () => {
 
     expect(authors instanceof Array).toBe(true);
     for(const author of authors){
-        expect(Object.keys(author).sort()).toEqual(['id', 'name', 'bio'].sort());
+        expect(Object.keys(author).sort()).toEqual(['id', 'name'].sort());
         expect(author.id).not.toBeNull();
         expect(author.name).not.toBeNull();
     }
@@ -52,7 +52,7 @@ test('getting the 1st page with 10 authors', async () => {
     expect(authors instanceof Array).toBe(true);
     expect(authors.length <= 10).toBe(true);
     for(const author of authors){
-        expect(Object.keys(author).sort()).toEqual(['id', 'name', 'bio'].sort());
+        expect(Object.keys(author).sort()).toEqual(['id', 'name'].sort());
         expect(author.id).not.toBeNull();
         expect(author.name).not.toBeNull();
     }
