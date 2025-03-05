@@ -1,5 +1,5 @@
-# Welcome To My Universal Library App 📚
----
+<h1 align="center"> Universal Library App 📚 </h1>
+
 It is a full stack library project where a user can access **MILLIONS** of Authors, read their bios and learn about their works. It's server side rendered single page websites that features searching and efficient pagination across the tens of thousands of page by leveraging PostgreSQL's features such as trigrams, text search, different kinds of indexs and materialized views.
 
 ---
