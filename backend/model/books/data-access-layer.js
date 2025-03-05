@@ -33,7 +33,7 @@ class BooksRepository{
      */
     static async getBooks(firstRowNum, lastRowNum){
         const { rows } = await pool.query(`
-            SELECT books.*
+            SELECT books.id, books.title
             FROM books
             JOIN ordered_books_title_view AS ordered_books
             ON ordered_books.id = books.id
