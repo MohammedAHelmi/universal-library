@@ -66,15 +66,12 @@ class AuthorsRepository{
      * @returns {Promise<number>}
      */
     static async getSimilarAuthorsCount(authorName, limit=process.env.MAX_SEARCH_RESULTS){
+        authorName = `%${authorName}%`;
         const { rows } = await pool.query(`
             SELECT COUNT(*)
-            FROM (
-                SELECT id, (name <-> $1) AS sml
-                FROM authors
-                ORDER BY (name <-> $1)
-                LIMIT $2
-            )
-            WHERE 1-sml > 0;
+            FROM authors
+            WHERE authors.name ILIKE $1
+            LIMIT $2
         `, [authorName, limit]);
 
         return + rows[0].count;
@@ -87,16 +84,13 @@ class AuthorsRepository{
      * @returns {Promise<Author[]>} 
     */
     static async getSimilarAuthors(name, resultOffset, resultLimit){
+        name = `%${name}%`;
         const { rows } = await pool.query(`
-            SELECT id, name
-            FROM (
-                SELECT name <-> $1::TEXT AS sml, authors.*
-                FROM authors
-                ORDER BY sml
-                LIMIT $2::INTEGER
-                OFFSET $3::INTEGER
-                ) AS similar_authors
-            WHERE 1-sml > 0;
+            SELECT authors.id, authors.name
+            FROM authors
+            WHERE authors.name ILIKE $1
+            LIMIT $2::INTEGER
+            OFFSET $3::INTEGER
         `, [name, resultLimit, resultOffset]);
         
         return rows.map(row => snakeCaseObjectKeysToCamelCase(row));

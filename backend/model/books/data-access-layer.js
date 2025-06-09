@@ -67,15 +67,12 @@ class BooksRepository{
      * @returns {Promise<number>}
      */
     static async getSimilarBooksCount(bookTitle, limit=process.env.MAX_SEARCH_RESULTS){
+        bookTitle = `%${bookTitle}%`
         const { rows } = await pool.query(`
             SELECT COUNT(*)
-            FROM (
-                SELECT id, (title <-> $1) AS sml
-                FROM books
-                ORDER BY (title <-> $1) 
-                LIMIT $2
-            )
-            WHERE 1-sml > 0;
+            FROM books
+            WHERE books.title ILIKE $1
+            LIMIT $2
         `, [bookTitle, limit]);
 
         return + rows[0].count;
@@ -89,16 +86,13 @@ class BooksRepository{
      * @returns {Promise<Book[]>} 
      */
     static async getSimilarBooks(name, resultOffset, resultLimit){
+        name = `%${name}%`;
         const { rows } = await pool.query(`
-            SELECT id, title
-            FROM (
-                SELECT title <-> $1::TEXT AS sml, books.*
-                FROM books
-                ORDER BY title <-> $1::TEXT
-                LIMIT $2::INTEGER
-                OFFSET $3::INTEGER
-            ) AS similar_book
-            WHERE sml > 0;
+            SELECT books.id, books.title
+            FROM books
+            WHERE books.title ILIKE $1
+            LIMIT $2::INTEGER
+            OFFSET $3::INTEGER
         `, [name, resultLimit, resultOffset]);
 
         return rows.map(row => snakeCaseObjectKeysToCamelCase(row));
