@@ -14,7 +14,7 @@ async function setupDefaultHandlers(fastify){
     .setErrorHandler((error, _, reply) => {        
         // notify error at the console
         console.log(`${style.red.open}An Error Occured${style.red.close}`);
-
+        
         // log the error at the toubleshouting file/stream
         fastify.log.error(error);
 

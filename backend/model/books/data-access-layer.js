@@ -53,9 +53,9 @@ class BooksRepository{
         const { rows } = await pool.query(`
             SELECT books.id, books.title
             FROM books
-            JOIN book_authors
-            ON book_authors.book_id = books.id
-            WHERE book_authors.author_id = $1::UUID;
+            JOIN author_books
+            ON author_books.book_id = books.id
+            WHERE author_books.author_id = $1::UUID;
         `, [authorId]);
 
         return rows.map(row => snakeCaseObjectKeysToCamelCase(row));
